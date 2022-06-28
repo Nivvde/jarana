@@ -1,5 +1,6 @@
 package com.jlcit.jarana.entities;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "imagen")
 @Data
+@Builder
 public class Imagen {
 
     @Id
