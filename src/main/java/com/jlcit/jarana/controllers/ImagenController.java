@@ -2,6 +2,7 @@ package com.jlcit.jarana.controllers;
 
 import com.jlcit.jarana.entities.Imagen;
 import com.jlcit.jarana.services.ImagenService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +13,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("imagenes")
 public class ImagenController {
 
-    private final ImagenService service;
-
-    ImagenController(ImagenService service){
-        this.service = service;
-    }
+    @Autowired
+    private ImagenService service;
 
     @PostMapping
     ResponseEntity<Imagen> uploadImage(@RequestParam("file") final MultipartFile file){
