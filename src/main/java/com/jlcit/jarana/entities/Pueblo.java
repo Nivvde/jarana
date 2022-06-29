@@ -1,6 +1,7 @@
 package com.jlcit.jarana.entities;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,21 +14,18 @@ public class Pueblo {
 
     @Id
     @Column(name = "pueblo_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator="puebloSecuencia")
+    @SequenceGenerator(name="puebloSecuencia",sequenceName="sq_pueblo", allocationSize=1)
     private Long id;
 
     @Column(nullable = false)
     private String nombre;
 
-    @Column
+    @Column(columnDefinition="text")
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name="cautonoma_id", nullable=false)
-    private CAutonoma cautonoma;
-
-    @ManyToOne
-    @JoinColumn(name="provincia_id", nullable=false)
+    @JoinColumn(name="provincia_id", nullable=false, foreignKey = @ForeignKey(name = "fk_pueblo_provincia"))
     private Provincia provincia;
 
     @OneToMany

@@ -11,7 +11,8 @@ public class CAutonoma {
 
     @Id
     @Column(name = "cautonoma_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator="cautonomaSecuencia")
+    @SequenceGenerator(name="cautonomaSecuencia",sequenceName="sq_cautonoma", allocationSize=1)
     private Long id;
 
     @Column(nullable = false)

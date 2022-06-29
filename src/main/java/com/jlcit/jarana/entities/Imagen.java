@@ -13,7 +13,8 @@ public class Imagen {
 
     @Id
     @Column(name = "imagen_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator="imagenSecuencia")
+    @SequenceGenerator(name="imagenSecuencia",sequenceName="sq_imagen", allocationSize=1)
     private Long id;
 
     @Column

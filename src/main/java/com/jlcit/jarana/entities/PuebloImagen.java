@@ -12,11 +12,11 @@ public class PuebloImagen implements Serializable {
 
     @Id
     @ManyToOne
-    @JoinColumn(name="pueblo_id", nullable=false)
+    @JoinColumn(name="pueblo_id", nullable=false, foreignKey = @ForeignKey(name = "fk_pueblo_imagen_pueblo"))
     private Pueblo pueblo;
 
     @Id
     @ManyToOne
-    @JoinColumn(name="imagen_id", nullable=false)
+    @JoinColumn(name="imagen_id", nullable=false, foreignKey = @ForeignKey(name = "fk_pueblo_imagen_imagen"))
     private Imagen imagen;
 }
